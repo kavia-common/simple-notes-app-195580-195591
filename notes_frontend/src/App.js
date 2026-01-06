@@ -1,7 +1,13 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import "./App.css";
 import NoteModal from "./components/NoteModal";
-import { createNote, deleteNote, listNotes, updateNote } from "./api/notesApi";
+import {
+  createNote,
+  deleteNote,
+  getApiBaseUrl,
+  listNotes,
+  updateNote,
+} from "./api/notesApi";
 
 /**
  * @typedef {Object} Note
@@ -38,6 +44,12 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    // Development-only startup log to help debug preview environment routing/CORS.
+    if (process.env.NODE_ENV === "development") {
+      // eslint-disable-next-line no-console
+      console.log("[notes_frontend] API base URL:", getApiBaseUrl());
+    }
+
     loadNotes();
   }, [loadNotes]);
 

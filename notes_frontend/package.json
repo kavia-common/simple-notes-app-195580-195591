@@ -9,6 +9,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:api:localhost": "cross-env REACT_APP_API_BASE_URL=http://localhost:3001 react-scripts start",
+    "start:api:relative": "cross-env REACT_APP_API_BASE_URL=relative react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
